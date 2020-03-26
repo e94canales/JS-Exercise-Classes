@@ -219,6 +219,32 @@ class ProjectManager extends Instructor{
       + If the student's grade is above a 70% let them graduate! Otherwise go back to grading their assignments to increase their score.
 */
 
+Student.prototype.grade = function(){
+  return Math.floor(Math.random() * 100 + 1)
+}
+
+Instructor.prototype.review = function (grade) {
+  function fiftyFifty() {
+    return Math.floor(Math.random() * 2 + 1)
+  }
+  if (fiftyFifty() === 1){
+    let plusPoints = Math.floor(Math.random() * 10);
+    return `Your score changed: ${grade} (+${plusPoints}). Total Score: ${grade + plusPoints}`;
+  
+  } else if (fiftyFifty() === 2) {
+    let minusPoints = Math.floor(Math.random() * 10);
+    return `Your score changed: ${grade} (-${minusPoints}). Total Score: ${grade - minusPoints}`;
+  }
+}
+
+Student.prototype.graduate = function (grade){
+  if (grade >= 70){
+    return `Congrats, you scored ${grade}%. You are ready to graduate!`
+  } else {
+    return `You scored ${grade}%. Time to hit the Docs. You're not ready to graduate.`
+  }
+}
+
 ///////// END OF CHALLENGE /////////
 ///////// END OF CHALLENGE /////////
 ///////// END OF CHALLENGE /////////
